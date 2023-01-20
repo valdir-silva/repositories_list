@@ -1,6 +1,6 @@
 package com.valdirsilva.repositorieslist.data.repository
 
-import com.valdirsilva.repositorieslist.data.ApiResults
+import com.valdirsilva.repositorieslist.data.api.ApiResults
 
 interface Repository {
 

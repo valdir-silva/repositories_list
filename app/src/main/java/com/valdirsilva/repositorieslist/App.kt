@@ -1,7 +1,7 @@
 package com.valdirsilva.repositorieslist
 
 import android.app.Application
-import com.valdirsilva.repositorieslist.data.ApiService
+import com.valdirsilva.repositorieslist.data.api.ApiService
 
 class App : Application() {
 

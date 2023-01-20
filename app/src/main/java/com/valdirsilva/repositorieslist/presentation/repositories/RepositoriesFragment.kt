@@ -90,12 +90,12 @@ class RepositoriesFragment : Fragment() {
                 if (currentPage > 1) adapter.removeLoadingFooter()
                 adapter.addAll(repositoryList)
             }
-            errorMessageResLiveData.observe(viewLifecycleOwner) { errorRes ->
+            errorMessageResLiveData.observe(viewLifecycleOwner) { errorMessage ->
                 binding.repositoriesListProgressBar.changeVisibility(false)
                 binding.rvRepositories.changeVisibility(false)
                 binding.tvError.apply {
                     changeVisibility(true)
-                    text = resources.getString(errorRes)
+                    text = errorMessage
                 }
             }
         }

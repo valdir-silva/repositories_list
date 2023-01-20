@@ -1,4 +1,4 @@
-package com.valdirsilva.repositorieslist.data
+package com.valdirsilva.repositorieslist.data.api
 
 import android.content.Context
 import co.infinum.retromock.Retromock

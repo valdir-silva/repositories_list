@@ -1,4 +1,4 @@
-package com.valdirsilva.repositorieslist.data
+package com.valdirsilva.repositorieslist.data.api
 
 import co.infinum.retromock.meta.Mock
 import co.infinum.retromock.meta.MockResponse

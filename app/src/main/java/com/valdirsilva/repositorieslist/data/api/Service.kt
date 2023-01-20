@@ -1,4 +1,4 @@
-package com.valdirsilva.repositorieslist.data
+package com.valdirsilva.repositorieslist.data.api
 
 import com.valdirsilva.repositorieslist.data.response.GitHubSearchResultResponse
 import retrofit2.Call

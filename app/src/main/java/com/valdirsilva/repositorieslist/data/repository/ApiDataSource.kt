@@ -1,9 +1,9 @@
 package com.valdirsilva.repositorieslist.data.repository
 
 import com.valdirsilva.repositorieslist.BuildConfig
-import com.valdirsilva.repositorieslist.data.ApiResults
-import com.valdirsilva.repositorieslist.data.ApiService
-import com.valdirsilva.repositorieslist.data.Service
+import com.valdirsilva.repositorieslist.data.api.ApiResults
+import com.valdirsilva.repositorieslist.data.api.ApiService
+import com.valdirsilva.repositorieslist.data.api.Service
 import com.valdirsilva.repositorieslist.data.response.GitHubSearchResultResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,20 +25,31 @@ class ApiDataSource : Repository {
                         response.body()?.let { result ->
                             resultCallback(ApiResults.Success(result.getGitHubSearchResultModel()))
                         } ?: run {
-                            resultCallback(ApiResults.ApiError(0)) // TODO rever o que passar
+                            resultCallback(
+                                ApiResults.Error(
+                                    statusCode = response.code(),
+                                    errorMessage = EMPTY_BODY
+                                )
+                            )
                         }
                     }
-                    else -> resultCallback(ApiResults.ApiError(response.code()))
+                    else -> resultCallback(
+                        ApiResults.Error(
+                            statusCode = response.code(),
+                            errorMessage = response.message()
+                        )
+                    )
                 }
             }
 
             override fun onFailure(call: Call<GitHubSearchResultResponse>, t: Throwable) {
-                resultCallback(ApiResults.ServerError)
+                resultCallback(ApiResults.Error(errorMessage = t.message.toString()))
             }
         })
     }
 
     private companion object {
         const val MOCK_VARIANT_KEY = "mock"
+        const val EMPTY_BODY = "response has no content"
     }
 }
