@@ -7,17 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.valdirsilva.repositorieslist.data.repository.ApiDataSource
 import com.valdirsilva.repositorieslist.databinding.RepositoriesFragmentBinding
 import com.valdirsilva.repositorieslist.utils.PaginationScrollListener
 import com.valdirsilva.repositorieslist.utils.changeVisibility
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RepositoriesFragment : Fragment() {
 
     private var _binding: RepositoriesFragmentBinding? = null
     private val binding get() = _binding
 
-    private lateinit var viewModel: RepositoriesViewModel
+    private val viewModel: RepositoriesViewModel by viewModel()
     private lateinit var adapter: RepositoriesAdapter
 
     private var isLoadingRv = false
@@ -38,8 +38,6 @@ class RepositoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = RepositoriesAdapter()
-        viewModel = RepositoriesViewModel.ViewModelFactory(ApiDataSource())
-            .create(RepositoriesViewModel::class.java)
 
         binding?.let {
             setupBinding(it)

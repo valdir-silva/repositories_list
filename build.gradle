@@ -12,6 +12,7 @@ ext {
     retrofitVersion = '2.9.0'
     picasso_version = '2.71828'
     circleimageview_version = '3.0.0'
+    koin_android_version= "3.3.2"
 }
 
 task clean(type: Delete) {

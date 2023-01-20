@@ -9,10 +9,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ApiDataSource : Repository {
+class ApiDataSource(apiService: ApiService) : Repository {
 
     private val service: Service =
-        if (BuildConfig.BUILD_TYPE == MOCK_VARIANT_KEY) ApiService.mockEndpoints else ApiService.apiEndpoints
+        if (BuildConfig.BUILD_TYPE == MOCK_VARIANT_KEY) apiService.mockEndpoints else apiService.apiEndpoints
 
     override fun getRepositories(page: String, resultCallback: (result: ApiResults) -> Unit) {
         service.getRepositories(page).enqueue(object : Callback<GitHubSearchResultResponse> {
