@@ -13,6 +13,10 @@ data class GitHubRepositoryResponse(
     val name: String,
     @Json(name = "full_name")
     val fullName: String,
+    @Json(name = "stargazers_count")
+    val starsCount: Int,
+    @Json(name = "forks_count")
+    val forkCount: Int,
     @Json(name = "owner")
     val owner: OwnerResponse
 ) : Parcelable {
@@ -20,6 +24,8 @@ data class GitHubRepositoryResponse(
         id = id,
         name = name,
         fullName = fullName,
+        starsCount = starsCount,
+        forkCount = forkCount,
         owner = owner.getOwnerModel()
     )
 }

@@ -13,4 +13,5 @@
     <color name="colorAccent">#11C76F</color>
     <color name="colorPrimaryLight">#ACB1BD</color>
     <color name="colorDetail">#80FFFFFF</color>
+    <color name="iconColor">#656565</color>
 </resources>

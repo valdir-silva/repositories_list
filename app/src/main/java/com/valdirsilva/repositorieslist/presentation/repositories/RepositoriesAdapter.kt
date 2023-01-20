@@ -31,6 +31,10 @@ class RepositoriesAdapter :
                 ITEM -> {
                     username.text = repository.owner.login
                     name.text = repository.fullName
+                    starIcon.changeVisibility(true)
+                    starsNumber.text = repository.starsCount.toString()
+                    forkIcon.changeVisibility(true)
+                    forksNumber.text = repository.forkCount.toString()
                     Picasso.get()
                         .load(repository.owner.avatarUrl)
                         .error(R.drawable.ic_round_account_circle)
