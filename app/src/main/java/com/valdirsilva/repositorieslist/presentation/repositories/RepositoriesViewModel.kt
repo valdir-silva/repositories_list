@@ -16,8 +16,8 @@ class RepositoriesViewModel(private val dataSource: Repository) : ViewModel() {
     private val _errorMessageResLiveData: MutableLiveData<Int> = MutableLiveData()
     val errorMessageResLiveData = _errorMessageResLiveData.toLiveData()
 
-    fun getRepositories() {
-        dataSource.getRepositories { result: ApiResults ->
+    fun getRepositories(page: Int) {
+        dataSource.getRepositories(page.toString()) { result: ApiResults ->
             when (result) {
                 is ApiResults.Success -> {
                     _modelListLiveData.value = result.repositoryModelList.repositories
@@ -34,10 +34,6 @@ class RepositoriesViewModel(private val dataSource: Repository) : ViewModel() {
                 }
             }
         }
-    }
-
-    fun setRepositoryList(repositoryList: List<GitHubRepositoryModel>) {
-        _modelListLiveData.value = repositoryList
     }
 
     class ViewModelFactory(private val dataSource: Repository) : ViewModelProvider.Factory {

@@ -11,5 +11,5 @@ interface MockEndpoints : Service {
     @MockResponse(body = "repositories.json")
     @Mock
     @GET("/")
-    override fun getRepositories(): Call<GitHubSearchResultResponse>
+    override fun getRepositories(page: String): Call<GitHubSearchResultResponse>
 }

@@ -4,5 +4,5 @@ import com.valdirsilva.repositorieslist.data.ApiResults
 
 interface Repository {
 
-    fun getRepositories(resultCallback: (result: ApiResults) -> Unit)
+    fun getRepositories(page: String, resultCallback: (result: ApiResults) -> Unit)
 }

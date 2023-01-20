@@ -5,5 +5,5 @@ import retrofit2.Call
 
 interface Service {
 
-    fun getRepositories(): Call<GitHubSearchResultResponse>
+    fun getRepositories(page: String): Call<GitHubSearchResultResponse>
 }

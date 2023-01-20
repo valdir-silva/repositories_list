@@ -14,23 +14,14 @@ class ApiDataSource : Repository {
     private val service: Service =
         if (BuildConfig.BUILD_TYPE == MOCK_VARIANT_KEY) ApiService.mockEndpoints else ApiService.apiEndpoints
 
-    override fun getRepositories(resultCallback: (result: ApiResults) -> Unit) {
-        service.getRepositories().enqueue(object : Callback<GitHubSearchResultResponse> {
+    override fun getRepositories(page: String, resultCallback: (result: ApiResults) -> Unit) {
+        service.getRepositories(page).enqueue(object : Callback<GitHubSearchResultResponse> {
             override fun onResponse(
                 call: Call<GitHubSearchResultResponse>,
                 response: Response<GitHubSearchResultResponse>
             ) {
                 when {
                     response.isSuccessful -> {
-//                        val modelList: MutableList<GitHubSearchResultModel> = mutableListOf()
-//
-//                        response.body()?.let { bodyResponse ->
-//                            for (result in bodyResponse) {
-//                                val model = result.getRepositoryModel()
-//                                modelList.add(model)
-//                            }
-//                        }
-
                         response.body()?.let { result ->
                             resultCallback(ApiResults.Success(result.getGitHubSearchResultModel()))
                         } ?: run {

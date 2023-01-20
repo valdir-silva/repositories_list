@@ -3,9 +3,12 @@ package com.valdirsilva.repositorieslist.data
 import com.valdirsilva.repositorieslist.data.response.GitHubSearchResultResponse
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiEndpoints : Service {
 
-    @GET("repositories?q=language:kotlin&sort=stars&page=1")
-    override fun getRepositories(): Call<GitHubSearchResultResponse>
+    @GET("repositories?q=language:kotlin&sort=stars")
+    override fun getRepositories(
+        @Query("page") page: String
+    ): Call<GitHubSearchResultResponse>
 }
