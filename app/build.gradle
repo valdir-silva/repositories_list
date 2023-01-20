@@ -28,6 +28,11 @@ android {
         debug {
             buildConfigField("String", "SERVER_URL", '"https://api.github.com/search/"')
         }
+        mock {
+            debuggable true
+            buildConfigField("String", "SERVER_URL", '"https://api.github.com/search/"')
+            signingConfig signingConfigs.debug
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

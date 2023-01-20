@@ -23,7 +23,7 @@ class RepositoriesViewModel(private val dataSource: Repository) : ViewModel() {
                 }
                 is ApiResults.Error -> {
                     _errorMessageResLiveData.value =
-                        "${result.statusCode} ${result.errorMessage}"
+                        "${result.statusCode ?: ""} ${result.errorMessage}"
                 }
             }
         }

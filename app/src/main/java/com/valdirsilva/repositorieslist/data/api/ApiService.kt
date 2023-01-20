@@ -38,6 +38,4 @@ object ApiService {
         apiEndpoints = retrofit.create(ApiEndpoints::class.java)
         mockEndpoints = retromock.create(MockEndpoints::class.java)
     }
-
-//        val service: MockEndpoints = init().create(MockEndpoints::class.java)
 }
