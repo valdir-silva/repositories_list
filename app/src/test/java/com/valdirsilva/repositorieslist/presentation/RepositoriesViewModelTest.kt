@@ -50,7 +50,7 @@ class RepositoriesViewModelTest : KoinTest {
 
         // Act
         viewModel.getRepositories(1)
-        val result = viewModel.modelListLiveData.value
+        val result = viewModel.repositoryListLiveData.value
 
         // Assert
         assert(result == repositorySearchResult.repositories)

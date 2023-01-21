@@ -99,9 +99,15 @@ class RepositoriesAdapter :
         }
     }
 
+    fun removeAll() {
+        repositoryList = LinkedList()
+    }
+
     private fun getItem(position: Int): GitHubRepositoryModel {
         return repositoryList[position]
     }
+
+    fun getRepositoryList() = repositoryList
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
