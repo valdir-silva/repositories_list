@@ -83,4 +83,8 @@ dependencies {
     implementation "io.insert-koin:koin-android-compat:$koin_android_version"
     implementation "io.insert-koin:koin-androidx-workmanager:$koin_android_version"
     implementation "io.insert-koin:koin-androidx-navigation:$koin_android_version"
+    testImplementation "io.insert-koin:koin-test:$koin_android_version"
+
+    testImplementation 'io.mockk:mockk:1.10.2'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
 }
